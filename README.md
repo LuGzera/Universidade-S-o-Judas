@@ -1,1 +1,1 @@
-# Universidade-S-o-Judas
+# Universidade-Sao-Judas
