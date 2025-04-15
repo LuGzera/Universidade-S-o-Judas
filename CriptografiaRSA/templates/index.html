@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Votação</title>
+    <link rel="stylesheet" href="/static/node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="container custom-container">
+
+        <h1 class="text-center mb-4">Escolha seu Candidato</h1>
+
+        <form class="votacao" action="{{url_for('Insert')}}" method="post">
+            <div class="candidatos d-flex justify-content-around flex-wrap">
+
+                <div class="card m-2" style="width: 10rem;">
+                    <img src="/static/assets/candidato1.png" class="card-img-top" alt="Valter Miguel">
+                    <div class="card-body">
+                        <h5 class="card-title">Dr. Valter Miguel </h5>
+                        <input type="radio" name="candidato" value="Valter Miguel">
+                    </div>
+                </div>
+
+                <div class="card m-2" style="width: 10rem;">
+                    <img src="/static/assets/candidato3.png" class="card-img-top" alt="Carlos Roberto">
+                    <div class="card-body">
+                        <h5 class="card-title">Carlos Roberto</h5>
+                        <input type="radio" name="candidato" value="Carlos Roberto">
+                    </div>
+                </div>
+
+                <div class="card m-2" style="width: 10rem;">
+                    <img src="/static/assets/candidato2.png" class="card-img-top" alt="Maria Francisca">
+                    <div class="card-body">
+                        <h5 class="card-title">Maria Francisca</h5>
+                        <input type="radio" name="candidato" value="Maria Francisca" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center align-items-center mt-4">
+                <div class="me-2">
+                    <input type="text" name="username" class="form-control" placeholder="Digite seu nome" required style="width: 300px;">
+                </div>
+                <div>
+                    <button id="votarBtn" class="btn btn-primary" type="submit">Votar</button>
+                </div>
+            </div>
+
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible mt-5 text-center" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>                
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+    </div>
+    <a href="{{url_for('VotesList')}}" class="btn btn-primary pageBtns">Votos</a>
+
+<script src="/static/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
